@@ -1,4 +1,4 @@
 package com.example.springkafkademo.integration;
 
-public record ExampleMessage(String data) {
+public record ExampleMessage(String data, String source) {
 }

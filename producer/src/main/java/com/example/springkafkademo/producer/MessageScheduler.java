@@ -18,7 +18,8 @@ public class MessageScheduler {
 
     @Scheduled(initialDelay = 2000L, fixedRate = 1000L)
     public void sendMessage() {
-        kafkaTemplate.send(KafkaConfiguration.EXAMPLE_TOPIC, new ExampleMessage(UUID.randomUUID().toString()));
+        kafkaTemplate.send(KafkaConfiguration.EXAMPLE_TOPIC,
+                new ExampleMessage(UUID.randomUUID().toString(), "template-scheduled"));
     }
 
 }
