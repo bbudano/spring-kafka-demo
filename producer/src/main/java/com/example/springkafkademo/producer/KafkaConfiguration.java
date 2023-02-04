@@ -14,10 +14,16 @@ import java.util.Map;
 public class KafkaConfiguration {
 
     public static final String EXAMPLE_TOPIC = "example_topic";
+    public static final String SCHEDULER_TOPIC = "scheduler_topic";
 
     @Bean
-    NewTopic newTopic() {
+    NewTopic exampleTopic() {
         return new NewTopic(EXAMPLE_TOPIC, 1, (short) 1);
+    }
+
+    @Bean
+    NewTopic schedulerTopic() {
+        return new NewTopic(SCHEDULER_TOPIC, 1, (short) 1);
     }
 
     @Bean

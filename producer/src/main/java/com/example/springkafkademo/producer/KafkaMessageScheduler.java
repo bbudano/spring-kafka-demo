@@ -8,18 +8,18 @@ import org.springframework.stereotype.Component;
 import java.util.UUID;
 
 @Component
-public class MessageScheduler {
+public class KafkaMessageScheduler {
 
     private final KafkaTemplate<Object, Object> kafkaTemplate;
 
-    public MessageScheduler(KafkaTemplate<Object, Object> kafkaTemplate) {
+    public KafkaMessageScheduler(KafkaTemplate<Object, Object> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
     @Scheduled(initialDelay = 2000L, fixedRate = 1000L)
     public void sendMessage() {
-        kafkaTemplate.send(KafkaConfiguration.EXAMPLE_TOPIC,
-                new ExampleMessage(UUID.randomUUID().toString(), "template-scheduled"));
+        kafkaTemplate.send(KafkaConfiguration.SCHEDULER_TOPIC,
+                new ExampleMessage(UUID.randomUUID().toString(), "kafka-template-scheduled"));
     }
 
 }

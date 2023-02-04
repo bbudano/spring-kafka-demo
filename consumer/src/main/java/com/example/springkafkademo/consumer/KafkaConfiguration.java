@@ -14,14 +14,14 @@ public class KafkaConfiguration {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(KafkaConfiguration.class);
 
-    private static final String EXAMPLE_TOPIC = "example_topic";
+    private static final String SCHEDULER_TOPIC = "scheduler_topic";
 
     @Bean
     JsonMessageConverter jsonMessageConverter() {
         return new JsonMessageConverter();
     }
 
-    @KafkaListener(topics = EXAMPLE_TOPIC, groupId = "example_topic_group")
+    @KafkaListener(topics = SCHEDULER_TOPIC, groupId = "scheduler_topic_group")
     public void onNewExampleMessage(Message<ExampleMessage> exampleMessage) {
         LOGGER.info("Payload - {}", exampleMessage.getPayload());
         LOGGER.info("Headers - {}", exampleMessage.getHeaders());
