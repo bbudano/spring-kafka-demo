@@ -12,6 +12,7 @@
         <module>producer</module>
         <module>consumer</module>
         <module>integration</module>
+        <module>analytics</module>
     </modules>
 
 </project>
