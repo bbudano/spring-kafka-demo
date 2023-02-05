@@ -8,6 +8,7 @@ import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.Materialized;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.kafka.core.CleanupConfig;
 
 import java.util.function.Function;
 
@@ -22,6 +23,11 @@ public class KafkaStreamConfiguration {
                 .groupByKey(Grouped.with(Serdes.String(), Serdes.Long()))
                 .count(Materialized.as("source_counts"))
                 .toStream();
+    }
+
+    @Bean
+    CleanupConfig cleanupConfig() {
+        return new CleanupConfig(false, true);
     }
 
 }
