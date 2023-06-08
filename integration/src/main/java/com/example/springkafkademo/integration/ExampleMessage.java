@@ -1,4 +1,6 @@
 package com.example.springkafkademo.integration;
 
-public record ExampleMessage(String data, String source) {
+import java.time.Instant;
+
+public record ExampleMessage(String data, Instant timestamp) {
 }
